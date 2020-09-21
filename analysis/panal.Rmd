@@ -1,0 +1,38 @@
+---
+title: "Plot P-values"
+author: "David Gerard"
+date: "9/21/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Abstract
+
+I demonstrate that $p$-values are uniform under the null, but skewed right under the alternative.
+
+# Analysis
+
+Load in simulations
+```{r, message = FALSE}
+library(tidyverse)
+pnull <- readRDS("../output/pnull.RDS")
+palt <- readRDS("../output/palt.RDS")
+pdf <- tibble(null = pnull, alt = palt)
+```
+
+Make plot
+```{r}
+pdf %>%
+  gather(key = "scenario", value = "p-value") %>%
+  mutate(scenario = recode(scenario,
+                           alt = "Alternative", 
+                           null = "Null")) %>%
+  ggplot(aes(x = `p-value`, color = scenario)) +
+  geom_freqpoly(bins = 20) +
+  theme_bw()
+```
+
+
