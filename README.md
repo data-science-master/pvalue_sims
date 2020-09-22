@@ -9,7 +9,7 @@ David Gerard
 This is a simple example of using a Makefile to organize the pipeline of
 a basic data analysis.
 
-The files in the final report are:
+The files after everything is evaluated are:
 
   - Makefile
   - Readme.Rmd
