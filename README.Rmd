@@ -1,0 +1,55 @@
+---
+output: github_document
+title: "Simple example of a Makefile"
+author: "David Gerard"
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "README-"
+)
+```
+
+## Introduction
+
+This is a simple example of using a Makefile to organize the pipeline of a basic data analysis.
+
+The files in the final report are:
+
+- Makefile
+- Readme.Rmd
+- Readme.md
+- analysis
+    - add_alt_sims.R
+    - null_sims.R
+    - panal.html
+    - panal.Rmd
+- output
+    - add_alt_sims.Rout
+    - null_sims.Rout
+    - pdat.csv
+    - pnull.RDS
+
+These files have the following dependency structure:
+
+```{r dependency-graph, message = FALSE, echo = FALSE}
+library(tidyverse)
+library(ggdag)
+set.seed(15)
+dagify("pnull.RDS" ~ "null_sims.R",
+       "pdat.csv" ~ "add_alt_sims.R",
+       "pdat.csv" ~ "pnull.RDS",
+       "panal.html" ~ "panal.Rmd",
+       "panal.html" ~ "pdat.csv") %>%
+  ggdag(layout = "sugiyama",
+        text_col = "black",
+        node = FALSE) +
+  theme_void() +
+  xlim(-0.5, 2.5)
+```
+
+See the [Makefile](https://github.com/data-science-master/pvalue_sims/blob/master/Makefile) for how to organize this dependency structure.

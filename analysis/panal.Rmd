@@ -18,9 +18,7 @@ I demonstrate that $p$-values are uniform under the null, but skewed right under
 Load in simulations
 ```{r, message = FALSE}
 library(tidyverse)
-pnull <- readRDS("../output/pnull.RDS")
-palt <- readRDS("../output/palt.RDS")
-pdf <- tibble(null = pnull, alt = palt)
+pdf <- read_csv("../output/pdat.csv")
 ```
 
 Make plot
