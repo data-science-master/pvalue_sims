@@ -2,12 +2,10 @@
 title: "Plot P-values"
 author: "David Gerard"
 date: "9/21/2020"
-output: html_document
+format: 
+  html:
+    embed-resources: true
 ---
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
 
 # Abstract
 
@@ -16,7 +14,8 @@ I demonstrate that $p$-values are uniform under the null, but skewed right under
 # Analysis
 
 Load in simulations
-```{r, message = FALSE}
+```{r}
+#| message: false
 library(tidyverse)
 pdf <- read_csv("../output/pdat.csv")
 ```
