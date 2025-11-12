@@ -11,19 +11,19 @@ a basic data analysis.
 
 The files after everything is evaluated are:
 
-  - Makefile
-  - Readme.Rmd
-  - Readme.md
-  - analysis
-      - add\_alt\_sims.R
-      - null\_sims.R
-      - panal.html
-      - panal.Rmd
-  - output
-      - add\_alt\_sims.Rout
-      - null\_sims.Rout
-      - pdat.csv
-      - pnull.RDS
+- Makefile
+- Readme.qmd
+- Readme.md
+- analysis
+  - add_alt_sims.R
+  - null_sims.R
+  - panal.qmd
+- output
+  - add_alt_sims.Rout
+  - null_sims.Rout
+  - panal.html
+  - pdat.csv
+  - pnull.RDS
 
 These files have the following dependency structure:
 

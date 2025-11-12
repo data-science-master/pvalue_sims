@@ -21,16 +21,16 @@ This is a simple example of using a Makefile to organize the pipeline of a basic
 The files after everything is evaluated are:
 
 - Makefile
-- Readme.Rmd
+- Readme.qmd
 - Readme.md
 - analysis
     - add_alt_sims.R
     - null_sims.R
-    - panal.html
-    - panal.Rmd
+    - panal.qmd
 - output
     - add_alt_sims.Rout
     - null_sims.Rout
+    - panal.html
     - pdat.csv
     - pnull.RDS
 
@@ -43,7 +43,7 @@ set.seed(15)
 dagify("pnull.RDS" ~ "null_sims.R",
        "pdat.csv" ~ "add_alt_sims.R",
        "pdat.csv" ~ "pnull.RDS",
-       "panal.html" ~ "panal.Rmd",
+       "panal.html" ~ "panal.qmd",
        "panal.html" ~ "pdat.csv") %>%
   ggdag(layout = "sugiyama",
         text_col = "black",
