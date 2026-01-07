@@ -1,5 +1,6 @@
 # A very basic Makefile for organizing some simple simulations of p-values
 
+.PHONY: all
 all: sims
 
 .PHONY: sims
